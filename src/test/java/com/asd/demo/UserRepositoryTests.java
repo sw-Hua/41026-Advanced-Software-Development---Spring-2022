@@ -10,11 +10,14 @@ import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.test.annotation.Rollback;
 
 import java.util.Optional;
-
+/*
 @DataJpaTest
 @AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
 @Rollback(false)
+*/
+
 public class UserRepositoryTests {
+    /*
     @Autowired private VipUserRepository repo;
 
     @Test
@@ -67,4 +70,6 @@ public class UserRepositoryTests {
         Assertions.assertThat(OptionaVipUser).isNotPresent(); // isPresent 是否存在
 
     }
+    */
+
 }
