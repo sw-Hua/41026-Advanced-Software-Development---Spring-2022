@@ -4,15 +4,14 @@ variables:
   PLANTUML_VERSION: '1.2022.6'
 
 steps:
+
 - task: Maven@3
-  displayName: 'PlantUML Installer'
   inputs:
-    goals: 'dependency:get'
-    options: |
-      -Dartifact='net.sourceforge.plantuml:plantuml:$(PLANTUML_VERSION)'
-      -Ddest='$(Build.SourcesDirectory)'
-      -DremoteRepositories='https://repo1.maven.org/maven2'
-      -Dtransitive=false
-    mavenOptions: '$(MAVEN_OPTS)'
-- script: java -jar plantuml-$(PLANTUML_VERSION).jar *.puml
-  displayName: 'PlantUML Export'
+    mavenPomFile: 'pom.xml'
+    publishJUnitResults: true
+    testResultsFiles: '**/surefire-reports/TEST-*.xml'
+    javaHomeOption: 'JDKVersion'
+    mavenVersionOption: 'Default'
+    mavenAuthenticateFeed: false
+    effectivePomSkip: false
+    sonarQubeRunAnalysis: false
