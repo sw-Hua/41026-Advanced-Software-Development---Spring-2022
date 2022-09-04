@@ -1,22 +1,18 @@
-# Maven
-# Build your Java project and run tests with Apache Maven.
-# Add steps that analyze code, save build artifacts, deploy, and more:
-# https://docs.microsoft.com/azure/devops/pipelines/languages/java
-
-trigger:
-- main
-
-pool:
-  vmImage: ubuntu-latest
+variables:
+  MAVEN_CACHE: '$(Pipeline.Workspace)/.m2/repository'
+  MAVEN_OPTS: '-Dmaven.repo.local=$(MAVEN_CACHE)'
+  PLANTUML_VERSION: '1.2022.6'
 
 steps:
 - task: Maven@3
+  displayName: 'PlantUML Installer'
   inputs:
-    mavenPomFile: '<project Name>/pom.xml'
-    mavenOptions: '-Xmx3072m'
-    javaHomeOption: 'JDKVersion'
-    jdkVersionOption: '1.8'
-    jdkArchitectureOption: 'x64'
-    publishJUnitResults: true
-    testResultsFiles: '**/surefire-reports/TEST-*.xml'
-    goals: 'package'
+    goals: 'dependency:get'
+    options: |
+      -Dartifact='net.sourceforge.plantuml:plantuml:$(PLANTUML_VERSION)'
+      -Ddest='$(Build.SourcesDirectory)'
+      -DremoteRepositories='https://repo1.maven.org/maven2'
+      -Dtransitive=false
+    mavenOptions: '$(MAVEN_OPTS)'
+- script: java -jar plantuml-$(PLANTUML_VERSION).jar *.puml
+  displayName: 'PlantUML Export'
