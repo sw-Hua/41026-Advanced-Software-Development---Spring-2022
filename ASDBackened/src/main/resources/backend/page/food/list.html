@@ -5,7 +5,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
-  <!-- 引入样式 -->
+  <!-- importStyle -->
   <link rel="stylesheet" href="../../plugins/element-ui/index.css" />
   <link rel="stylesheet" href="../../styles/common.css" />
   <link rel="stylesheet" href="../../styles/page.css" />
@@ -118,15 +118,21 @@
         </el-table-column>
       </el-table>
       <el-pagination
-        class="pageList"
-        :page-sizes="[10, 20, 30, 40]"
-        :page-size="pageSize"
-        layout="total, sizes, prev, pager, next, jumper"
-        :total="counts"
-        @size-change="handleSizeChange"
-        :current-page.sync="page"
-        @current-change="handleCurrentChange"
-      ></el-pagination>
+              background
+              layout="prev, pager, next"
+              :total="1000"
+      >
+      </el-pagination>
+<!--      <el-pagination-->
+<!--        class="pageList"-->
+<!--        :page-sizes="[10, 20, 30, 40]"-->
+<!--        :page-size="pageSize"-->
+<!--        layout="total, sizes, prev, pager, next, jumper"-->
+<!--        :total="counts"-->
+<!--        @size-change="handleSizeChange"-->
+<!--        :current-page.sync="page"-->
+<!--        @current-change="handleCurrentChange"-->
+<!--      ></el-pagination>-->
     </div>
   </div>
 

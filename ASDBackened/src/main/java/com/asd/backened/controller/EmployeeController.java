@@ -50,17 +50,17 @@ public class EmployeeController {
 
         //3、If no query is found, the login failure result will be returned.
         if(emp == null){
-            return R.error("登录失败");
+            return R.error("loginFailed");
         }
 
         //4、Password comparison, if inconsistent, return the login failure result
         if(!emp.getPassword().equals(password)){
-            return R.error("登录失败");
+            return R.error("loginFailed");
         }
 
         //5、Check the employee status, if it is disabled, return the employee disabled result
         if(emp.getStatus() == 0){
-            return R.error("账号已禁用");
+            return R.error("accountIsDisabled");
         }
 
         //6、If the login is successful, the employee id will be stored in the session and the login success result will be returned.
@@ -77,6 +77,6 @@ public class EmployeeController {
     public R<String> logout(HttpServletRequest request){
         //Clear the id of the currently logged in employee saved in the Session
         request.getSession().removeAttribute("employee");
-        return R.success("退出成功");
+        return R.success("exitSuccessfully");
     }
 }
