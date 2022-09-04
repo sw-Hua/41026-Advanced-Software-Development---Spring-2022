@@ -11,7 +11,7 @@ import java.io.Serializable;
 import java.time.LocalDateTime;
 
 /**
- * 员工实体
+ * employeeEntity
  */
 @Data
 public class Employee implements Serializable {
@@ -30,7 +30,7 @@ public class Employee implements Serializable {
 
     private String sex;
 
-    private String idNumber;//身份证号码
+    private String idNumber;//identificationNumber
 
     private Integer status;
 

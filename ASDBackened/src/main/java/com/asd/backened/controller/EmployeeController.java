@@ -31,7 +31,7 @@ public class EmployeeController {
     private EmployeeService employeeService;
 
     /**
-     * 员工登录
+     * employeeLogin
      * @param request
      * @param employee
      * @return
@@ -39,43 +39,43 @@ public class EmployeeController {
     @PostMapping("/login")
     public R<Employee> login(HttpServletRequest request, @RequestBody Employee employee){
 
-        //1、将页面提交的密码password进行md5加密处理
+        //1、The password submitted by the page is encrypted by md 5
         String password = employee.getPassword();
         password = DigestUtils.md5DigestAsHex(password.getBytes());
 
-        //2、根据页面提交的用户名username查询数据库
+        //2、Query the database according to the username username submitted on the page
         LambdaQueryWrapper<Employee> queryWrapper = new LambdaQueryWrapper<>();
         queryWrapper.eq(Employee::getUsername,employee.getUsername());
         Employee emp = employeeService.getOne(queryWrapper);
 
-        //3、如果没有查询到则返回登录失败结果
+        //3、If no query is found, the login failure result will be returned.
         if(emp == null){
             return R.error("登录失败");
         }
 
-        //4、密码比对，如果不一致则返回登录失败结果
+        //4、Password comparison, if inconsistent, return the login failure result
         if(!emp.getPassword().equals(password)){
             return R.error("登录失败");
         }
 
-        //5、查看员工状态，如果为已禁用状态，则返回员工已禁用结果
+        //5、Check the employee status, if it is disabled, return the employee disabled result
         if(emp.getStatus() == 0){
             return R.error("账号已禁用");
         }
 
-        //6、登录成功，将员工id存入Session并返回登录成功结果
+        //6、If the login is successful, the employee id will be stored in the session and the login success result will be returned.
         request.getSession().setAttribute("employee",emp.getId());
         return R.success(emp);
     }
 
     /**
-     * 员工退出
+     * employeeQuits
      * @param request
      * @return
      */
     @PostMapping("/logout")
     public R<String> logout(HttpServletRequest request){
-        //清理Session中保存的当前登录员工的id
+        //Clear the id of the currently logged in employee saved in the Session
         request.getSession().removeAttribute("employee");
         return R.success("退出成功");
     }

@@ -86,14 +86,22 @@
         </el-table-column>
       </el-table>
       <el-pagination
-        class="pageList"
-        :page-sizes="[10, 20, 30, 40]"
-        :page-size="pageSize"
-        layout="total, sizes, prev, pager, next, jumper"
-        :total="counts"
-        @size-change="handleSizeChange"
-        @current-change="handleCurrentChange"
-      ></el-pagination>
+              background
+              layout="prev, pager, next"
+              :total="1000"
+      >
+      </el-pagination>
+
+
+<!--      <el-pagination-->
+<!--        class="pageList"-->
+<!--        :page-sizes="[10, 20, 30, 40]"-->
+<!--        :page-size="pageSize"-->
+<!--        layout="total, sizes, prev, pager, next, jumper"-->
+<!--        :total="counts"-->
+<!--        @size-change="handleSizeChange"-->
+<!--        @current-change="handleCurrentChange"-->
+<!--      ></el-pagination>-->
     </div>
     <el-dialog
       :title="classData.title"

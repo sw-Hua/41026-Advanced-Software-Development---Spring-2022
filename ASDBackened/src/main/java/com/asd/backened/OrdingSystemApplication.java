@@ -17,9 +17,10 @@ import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
 /**
  * 〈一句话功能简述〉<br> 
  * 〈backened function〉
+ * background_management_page
  *
- * @author benjamen
- * @create 2022/8/29
+ * @author Xuhao Guo
+ * @create 2022/9/4
  * @since 1.0.0
  */
 @EnableEurekaClient
