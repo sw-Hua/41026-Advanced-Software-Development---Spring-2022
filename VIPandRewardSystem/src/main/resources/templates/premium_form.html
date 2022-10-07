@@ -10,9 +10,7 @@
 </head>
 
 <body>
-<!--<h1>[[${pageTitle}]]</h1>-->
-<!--<h1 id="vipNameID">[[${vipID}]]</h1>-->
-<!--<h1 id="userID">[[${userID}]]</h1>-->
+
 
 <div class="container-fluid">
     <div class="myForm">
@@ -51,6 +49,9 @@
         </form>
     </div>
 </div>
+<h1 class="hiddenText">[[${pageTitle}]]</h1>
+<h1 class="hiddenText" id="vipNameID">[[${vipID}]]</h1>
+<h1 class="hiddenText" id="userID">[[${userID}]]</h1>
 
 <script type="text/javascript">
     function cancelForm () {
@@ -81,6 +82,10 @@
 
     .mytext {
         margin-top: 100px;
+    }
+
+    .hiddenText{
+        color: white; text-indent:-9999px;
     }
 </style>
 </body>
