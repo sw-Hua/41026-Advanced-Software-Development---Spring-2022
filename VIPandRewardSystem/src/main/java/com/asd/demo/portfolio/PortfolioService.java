@@ -52,7 +52,7 @@ public class PortfolioService {
         String toAddress = customer.getUserEmail();
         String fromAddress = "Alfred0449500032Hua@gmail.com";
         String senderName = "Restaurant Verification System";
-        String subject = "Please verify your registration";
+        String subject = "Please verify your mail account";
         String content = "Dear [[name]],<br>"
                 + "Please click the link below to verify your registration:<br>"
                 + "<h3><a href=\"[[URL]]\" target=\"_self\">VERIFY</a></h3>"
